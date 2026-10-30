@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>My Personal Portfolio</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: white;
+        }
+
+        nav {
+            background-color: #1e1e1e;
+            padding: 20px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav h2 {
+            margin: 0 0 15px;
+            color: #b7a6ff;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 10px;
+            font-size: 14px;
+            display: inline-block;
+        }
+
+        nav a:hover {
+            color: #b7a6ff;
+        }
+        
+
+        .page {
+            display: none;
+            min-height: 80vh;
+            animation: fadeIn 0.6s ease;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+        .home {
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .home-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 50px;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .profile-photo {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            border: 4px solid #b7a6ff;
+            object-fit: cover;
+            background-color: #1e1e1e;
+        }
+
+        .home h1 {
+            font-size: 45px;
+            margin-bottom: 10px;
+        }
+
+        .home h1 span {
+            color: #b7a6ff;
+        }
+
+        .home p {
+            color: #cccccc;
+            max-width: 550px;
+            margin: 15px auto;
+            line-height: 1.8;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: #b7a6ff;
+            color: black;
+            padding: 12px 20px;
+            margin-top: 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: white;
+        }
+
+
+        section {
+            padding: 60px 20px;
+            scroll-margin-top: 20px;
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: 30px;
+            margin-bottom: 30px;
+        }
+
+        .content {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .content p {
+            color: #cccccc;
+            line-height: 1.8;
+        }
+
+
+        #about {
+            background-color: #1b1b1b;
+        }
+
+
+        .education {
+            background-color: #1e1e1e;
+            padding: 25px;
+            border-radius: 10px;
+            margin: auto;
+            max-width: 700px;
+        }
+
+        .education h3 {
+            color: #b7a6ff;
+        }
+
+        .education p {
+            color: #cccccc;
+            line-height: 1.8;
+        }
+
+
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .skill {
+            background-color: #1e1e1e;
+            padding: 25px;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .skill h3 {
+            color: #b7a6ff;
+        }
+
+        .skill p {
+            color: #cccccc;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+
+        #interests {
+            background-color: #1b1b1b;
+        }
+
+        .interests {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .interest {
+            background-color: #252525;
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        .interest h3 {
+            color: #b7a6ff;
+        }
+
+        .interest p {
+            color: #cccccc;
+            line-height: 1.7;
+        }
+
+
+        #contact {
+            text-align: center;
+            background-color: #1b1b1b;
+        }
+
+        #contact p {
+            color: #cccccc;
+            line-height: 1.8;
+        }
+
+
+        footer {
+            text-align: center;
+            background-color: #0a0a0a;
+            color: #999999;
+            padding: 20px;
+            font-size: 13px;
+        }
+
+
+        @media screen and (max-width: 600px) {
+
+            nav a {
+                margin: 8px;
+            }
+
+            .home {
+                padding: 60px 20px;
+            }
+
+            .home-content {
+                flex-direction: column-reverse;
+                gap: 25px;
+            }
+
+            .profile-photo {
+                width: 180px;
+                height: 180px;
+            }
+
+            .home h1 {
+                font-size: 35px;
+            }
+
+            section {
+                padding: 45px 20px;
+            }
+
+            section h2 {
+                font-size: 26px;
+            }
+
+            .skills {
+                grid-template-columns: 1fr;
+            }
+
+            .interests {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <h2>James Dean Alipio</h2>
+
+        <a href="#home" onclick="showPage('home')">Home</a>
+        <a href="#about" onclick="showPage('about')">About</a>
+        <a href="#education" onclick="showPage('education')">Education</a>
+        <a href="#skills" onclick="showPage('skills')">Skills</a>
+        <a href="#interests" onclick="showPage('interests')">Interests</a>
+        <a href="#contact" onclick="showPage('contact')">Contact</a>
+    </nav>
+
+
+    <section class="home page active" id="home">
+
+        <div class="home-content">
+
+            <div>
+                <h1>Hi, I'm <span>James!</span></h1>
+
+                <h3>BS Information Systems Student</h3>
+
+                <p>
+                    Welcome to my personal portfolio! I'm a college student who enjoys technology, music, gaming, and learning new things. I'm still figuring things out, but I'm always trying to improve myself and work toward my goals in life.
+                </p>
+
+                <a href="#about" class="button"
+                   onclick="showPage('about')">
+                    Get to Know Me
+                </a>
+            </div>
+
+            <img src="myphoto.jpeg"
+                 alt="My Profile Photo"
+                 class="profile-photo">
+                 
+        </div>
+    </section>
+
+
+    <section class="page" id="about">
+
+        <div class="content">
+            <h2>About Me</h2>
+            <p>
+                Hello! My name is James Dean, and I'm a third-year Bachelor of Science in Information Systems student. I'm an outgoing person who enjoys meeting new people and learning from different experiences.
+            </p>
+
+            <p>
+                I like asking questions and understanding things from different perspectives. I believe that every experience teaches us something, whether it's about ourselves, other people, or life in general.
+            </p>
+
+            <p>
+                During my free time, I usually listen to music, play games, spend time with people close to me, or enjoy some quiet time. I'm still learning about life and working toward the future I want for myself and my family.
+            </p>
+        </div>
+    </section>
+
+
+   <section class="page" id="education">
+
+        <h2>My Education</h2>
+
+        <div class="education">
+
+            <h3>🎓 Bachelor of Science in Information Systems</h3>
+
+            <p><b>School:</b> DFCAMCLP</p>
+
+            <p><b>Year Level:</b> Third Year College</p>
+
+            <p>
+                As an Information Systems student, I'm learning about programming, web development, databases, business processes, and how technology can help solve problems.
+            </p>
+        </div>
+    </section>
+
+
+    <section class="page" id="skills">
+
+        <h2>My Skills</h2>
+
+        <div class="skills">
+
+            <div class="skill">
+
+                <h3>HTML</h3>
+                <p>
+                    Learning how to create the structure of a website.
+                </p>
+            </div>
+
+            <div class="skill">
+
+                <h3>CSS</h3>
+                <p>
+                    Learning how to design and improve website layouts.
+                </p>
+            </div>
+
+            <div class="skill">
+
+                <h3>C++</h3>
+                <p>
+                    Learning programming basics and solving problems through code.
+                </p>
+            </div>
+
+            <div class="skill">
+
+                <h3>Communication</h3>
+                <p>
+                    Expressing ideas and interacting with other people.
+                </p>
+            </div>
+
+            <div class="skill">
+
+                <h3>Problem-Solving</h3>
+                <p>
+                    Finding ways to understand and solve different problems.
+                </p>
+            </div>
+
+            <div class="skill">
+
+                <h3>Adaptability</h3>
+
+                <p>
+                    Being willing to learn new things and try new experiences.
+                </p>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="page" id="interests">
+
+        <h2>My Interests</h2>
+
+        <div class="interests">
+
+            <div class="interest">
+
+                <h3>🎧 Music</h3>
+                <p>
+                    Music is a big part of my everyday life. I enjoy listening to artists like Drake, Frank Ocean, Daniel Caesar, and Clairo. Sometimes, music helps me express feelings that are difficult to explain.
+                </p>
+            </div>
+
+            <div class="interest">
+
+                <h3>🎮 Gaming</h3>
+                <p>
+                    I enjoy playing games during my free time. Gaming lets me relax, have fun, and challenge myself to improve.
+                </p>
+            </div>
+
+            <div class="interest">
+                
+                <h3>🐈 Cats</h3>
+                <p>
+                    I love cats because of their personalities and the comfort they bring. They're one of the little things that make life better.
+                </p>
+            </div>
+
+            <div class="interest">
+                <h3>💻 Technology</h3>
+
+                <p>
+                    I'm interested in computers, programming, and discovering how technology works. I want to keep improving my skills as a student.
+                </p>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="page" id="contact">
+        
+        <h2>Contact Me</h2>
+        
+        <p>
+            Thank you for visiting my portfolio!
+        </p>
+
+        <p>
+            Feel free to reach out if you want to connect or talk about new opportunities.
+        </p>
+
+        <a href="mailto:alipiojamesdean@gmail.com" class="button">
+           My Email
+        </a>
+
+        <a href="https://github.com/jmsdnKira"
+            class="button"
+            target="_blank"
+            rel="noopener noreferrer">
+           My GitHub
+        </a>
+
+         <a href="https://www.facebook.com/share/1CF2gvi6NG/?mibextid=wwXIfr"
+            class="button"
+            target="_blank"
+            rel="noopener noreferrer">
+          My Facebook
+        </a>
+    </section>
+
+
+    <footer>
+
+        <p>James Dean Alipio. | My Personal Portfolio</p>
+
+        <p>© 2026 All Rights Reserved.</p>
+
+    </footer>
+
+
+    <script>
+
+        function showPage(pageId) {
+
+            let pages = document.querySelectorAll(".page");
+
+            pages.forEach(function(page) {
+                page.classList.remove("active");
+            });
+
+            let selectedPage = document.getElementById(pageId);
+
+            selectedPage.classList.add("active");
+
+            window.scrollTo(0, 0);
+
+        }
+
+    </script>
+
+</body>
+</html>
